@@ -15,6 +15,19 @@ public class Slingshot : MonoBehaviour
     public Vector3 currentPosition;
     public float maxLength;
 
+    public float topBoundary;
+    public float bottomBoundary;
+    public float leftBoundary;
+    public float rightBoundary;
+
+    public GameObject ballProjectile;
+    Rigidbody2D ball;
+    Collider2D ballCollider;
+
+    public float ballPositionOffset;
+
+    public float force;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +35,15 @@ public class Slingshot : MonoBehaviour
         lineRenderers[1].positionCount = 2;
         lineRenderers[0].SetPosition(0, stripPositions[0].position);
         lineRenderers[1].SetPosition(0, stripPositions[1].position);
+
+        CreateBall();
+    }
+
+    void CreateBall()
+    {
+        ball = Instantiate(ballProjectile).GetComponent<Rigidbody2D>();
+        ballCollider = ball.GetComponent<Collider2D>();
+        ballCollider.enabled = false;
     }
 
     // Update is called once per frame
@@ -34,7 +56,9 @@ public class Slingshot : MonoBehaviour
 
             currentPosition = Camera.main.ScreenToWorldPoint(mousePosition);
             currentPosition = center.position + Vector3.ClampMagnitude(currentPosition - center.position, maxLength);
-
+            
+            currentPosition = ClampBoundaryX(currentPosition);
+            currentPosition = ClampBoundaryY(currentPosition);
 
             SetStrips(currentPosition);
         }
@@ -66,5 +90,27 @@ public class Slingshot : MonoBehaviour
     {
         lineRenderers[0].SetPosition(1, position);
         lineRenderers[1].SetPosition(1, position);
+
+        if (ball)
+        {
+            Vector3 dir = position - center.position;
+            ball.transform.position = position + dir.normalized * ballPositionOffset;
+            ball.transform.up = -dir.normalized;
+        }
+
     }
+    
+    
+
+    Vector3 ClampBoundaryY(Vector3 vector)
+    {
+        vector.y = Mathf.Clamp(vector.y, bottomBoundary, topBoundary);
+        return vector;
+    }
+    Vector3 ClampBoundaryX(Vector3 vector)
+    {
+        vector.x = Mathf.Clamp(vector.x, leftBoundary, rightBoundary);
+        return vector;
+    }
+
 }
