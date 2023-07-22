@@ -44,6 +44,9 @@ public class Slingshot : MonoBehaviour
         ball = Instantiate(ballProjectile).GetComponent<Rigidbody2D>();
         ballCollider = ball.GetComponent<Collider2D>();
         ballCollider.enabled = false;
+
+        ball.isKinematic = true;
+        ResetStrips();
     }
 
     // Update is called once per frame
@@ -61,6 +64,11 @@ public class Slingshot : MonoBehaviour
             currentPosition = ClampBoundaryY(currentPosition);
 
             SetStrips(currentPosition);
+
+            if (ballCollider)
+            {
+                ballCollider.enabled = true;
+            }
         }
         else
         {
@@ -78,7 +86,21 @@ public class Slingshot : MonoBehaviour
     private void OnMouseUp()
     {
         isMouseDown = false;
+        Shoot();
+        ball.isKinematic = false;
     }
+
+    void Shoot()
+    {
+        ball.isKinematic = false;
+        Vector3 ballForce = (currentPosition - center.position) * force * -1;
+        ball.velocity = ballForce;
+
+        ball = null;
+        ballCollider = null;
+        Invoke("CreateBall", 0.1f);
+    }
+
 
     void ResetStrips()
     {

@@ -541,10 +541,11 @@ MonoBehaviour:
   maxLength: 3.4
   topBoundary: -1
   bottomBoundary: -4.8
-  leftBoundary: -2.7
-  rightBoundary: 2.7
+  leftBoundary: -2.65
+  rightBoundary: 2.65
   ballProjectile: {fileID: 1383025495}
   ballPositionOffset: -0.3
+  force: 10
 --- !u!61 &1156232392
 BoxCollider2D:
   m_ObjectHideFlags: 0
