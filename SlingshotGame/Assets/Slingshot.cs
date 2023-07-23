@@ -52,6 +52,8 @@ public class Slingshot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         if (isMouseDown)
         {
             Vector3 mousePosition = Input.mousePosition;
@@ -96,6 +98,7 @@ public class Slingshot : MonoBehaviour
         Vector3 ballForce = (currentPosition - center.position) * force * -1;
         ball.velocity = ballForce;
 
+        
         ball = null;
         ballCollider = null;
         Invoke("CreateBall", 0.1f);
