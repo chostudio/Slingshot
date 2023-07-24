@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,6 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position += new Vector3(0, -2, 0) * Time.deltaTime;
     }
 }

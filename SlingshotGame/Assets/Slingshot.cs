@@ -89,7 +89,7 @@ public class Slingshot : MonoBehaviour
     {
         isMouseDown = false;
         Shoot();
-        ball.isKinematic = false;
+        
     }
 
     void Shoot()
@@ -101,7 +101,7 @@ public class Slingshot : MonoBehaviour
         
         ball = null;
         ballCollider = null;
-        Invoke("CreateBall", 0.1f);
+        Invoke("CreateBall", 0.2f);
     }
 
 
