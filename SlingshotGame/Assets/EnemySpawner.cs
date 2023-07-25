@@ -5,8 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
-    public float increaser = 2f;
-
+    
     [SerializeField] private GameObject enemy;
     private GameObject newEnemy;
 
@@ -14,10 +13,16 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float startingYposition;
     private Vector3 spawnPosition;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnNewEnemy", 0f, 2f);
+        InvokeRepeating("SpawnNewEnemy", 0f, 1.5f);
+    }
+
+    private void Update()
+    {
+       
     }
 
     private void SpawnNewEnemy()
@@ -26,7 +31,5 @@ public class EnemySpawner : MonoBehaviour
         spawnPosition = new Vector3(randomXposition, startingYposition, 0f);
         newEnemy = Instantiate(enemy, spawnPosition, Quaternion.identity);
     }
-
-   
 
 }

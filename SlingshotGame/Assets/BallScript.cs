@@ -20,10 +20,12 @@ public class BallScript : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("OutOfBounds"))
         {
+            
             Destroy(gameObject);
         }
         if (collision.gameObject.tag.Equals("Enemy"))
         {
+            CanvasScore.instance.AddPoint();
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
