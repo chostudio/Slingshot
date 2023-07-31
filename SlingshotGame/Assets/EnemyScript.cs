@@ -4,18 +4,31 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+    private float speedy;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        speedy = Random.Range(-3.0f, -1.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        transform.position += new Vector3(0, -2, 0) * Time.deltaTime;
+        transform.position += new Vector3(0, speedy, 0) * Time.deltaTime;
+        
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+        if (collision.gameObject.tag.Equals("Finish"))
+        {
+            Debug.Log("game over");
+
+            Destroy(gameObject);
+        }
         
     }
 

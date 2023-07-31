@@ -101,7 +101,7 @@ public class Slingshot : MonoBehaviour
         
         ball = null;
         ballCollider = null;
-        Invoke("CreateBall", 0.2f);
+        Invoke("CreateBall", 0.3f);
     }
 
 

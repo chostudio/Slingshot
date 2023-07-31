@@ -19,8 +19,7 @@ public class BallScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("OutOfBounds"))
-        {
-            
+        { 
             Destroy(gameObject);
         }
         if (collision.gameObject.tag.Equals("Enemy"))
