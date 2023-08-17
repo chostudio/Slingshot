@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     private float speedy;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,18 +17,6 @@ public class EnemyScript : MonoBehaviour
     {
         
         transform.position += new Vector3(0, speedy, 0) * Time.deltaTime;
-        
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-        if (collision.gameObject.tag.Equals("Finish"))
-        {
-            Debug.Log("game over");
-
-            Destroy(gameObject);
-        }
         
     }
 

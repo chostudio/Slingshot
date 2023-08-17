@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
         {
             if (increase < 1.5f)
             {
-                increase += 0.05f;
+                increase += 0.01f;
             }
             
             timer = 0f;

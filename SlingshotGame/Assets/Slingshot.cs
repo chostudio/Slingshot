@@ -28,6 +28,8 @@ public class Slingshot : MonoBehaviour
 
     public float force;
 
+    public bool finishDead;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +54,7 @@ public class Slingshot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        finishDead = Finish.isDead;
 
         if (isMouseDown)
         {
@@ -81,15 +83,20 @@ public class Slingshot : MonoBehaviour
 
     private void OnMouseDown()
     {
-        isMouseDown = true;
+        if (finishDead == false)
+        {
+            isMouseDown = true;
+        }
+        
         
     }
 
     private void OnMouseUp()
     {
+        
         isMouseDown = false;
         Shoot();
-        
+
     }
 
     void Shoot()
