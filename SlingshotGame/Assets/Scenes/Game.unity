@@ -247,7 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d650dc93afd44ccb85b8acc62888614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDead: 0
   gameManager: {fileID: 7510788867418348762}
 --- !u!1 &519420028
 GameObject:
@@ -919,6 +918,7 @@ MonoBehaviour:
   ballProjectile: {fileID: 4609552593020759412, guid: 397d15dc8e79b4f86a316b6361230a13, type: 3}
   ballPositionOffset: -0.3
   force: 10
+  finishDead: 0
 --- !u!61 &1156232392
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1216,7 +1216,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.3039783, g: 0.72984743, b: 0.9339623, a: 1}
+  m_Color: {r: 0.3058824, g: 0.78410685, b: 0.93333334, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
